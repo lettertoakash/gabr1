@@ -62,7 +62,9 @@ jobs:
             ${{ runner.os }}-node-${{ matrix.node-version }}-
 
       - name: Install Dependencies
-        run: npm install
+        run: |
+            npm cache clean --force
+            npm install --prefer-online --no-audit --no-fund
 
       - name: Test
         run: echo "code is tested!"
