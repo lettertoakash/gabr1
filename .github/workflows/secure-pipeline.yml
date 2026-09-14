@@ -46,12 +46,16 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node-version }}
-
       - name: Show environment
-        run:
-          echo "Github actions are running"
-          node --version
-          npm --version
+        run: |
+            echo "GitHub Actions is running"
+            echo "Runner OS: $RUNNER_OS"
+            echo "Runner name: $RUNNER_NAME"
+            echo "Runner architecture: $RUNNER_ARCH"
+            echo "Node version:"
+            node --version
+            echo "npm version:"
+            npm --version
 
       - name: Cache Dependencies
         uses: actions/cache@v5
