@@ -60,11 +60,11 @@ jobs:
           key: ${{ runner.os }}-node-${{ matrix.node-version }}-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
             ${{ runner.os }}-node-${{ matrix.node-version }}-
-
       - name: Install Dependencies
         run: |
             npm cache clean --force
-            npm install --prefer-online --no-audit --no-fund
+            npm config set registry https://registry.npmjs.org/
+            npm install --package-lock=false --prefer-online --no-audit --no-fund
 
       - name: Test
         run: echo "code is tested!"
